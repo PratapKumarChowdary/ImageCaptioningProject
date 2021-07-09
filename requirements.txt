@@ -1,0 +1,12 @@
+tenserflow
+pandas
+numpy
+matplotlib
+matplotlib.pyplot
+keras
+re
+nltk
+nltk.corpus
+string
+time
+pickle

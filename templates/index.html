@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Magic Caption</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <style>
+        body {
+            overflow: hidden;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            background: linear-gradient(89deg, #FF5EDF 0%, #04C8DE 100%);
+        }
+
+        .top {
+            top: 40%;
+            left: 25%;
+            font-weight: 100;
+            color: white;
+            font-size: 1em;
+            text-shadow: 1px 1px 5px black;
+        }
+
+        img {
+            width: 500px;
+            height: auto;
+        }
+
+        .text {
+            text-align: center;
+            font-size: 28px;
+            font-family: monospace;
+        }
+
+        .result {
+            font-family: monospace;
+            overflow: hidden;
+            font-weight: bold;
+            color: white;
+            font-size: 2em;
+        }
+
+
+        .card {
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%) align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 700px;
+            height: 100px;
+            border-radius: 18px;
+            background: radial-gradient(circle farthest-side at 0% 50%, #fb1 23.5%, rgba(240, 166, 17, 0) 0)21px 30px,
+                radial-gradient(circle farthest-side at 0% 50%, #B71 24%, rgba(240, 166, 17, 0) 0)19px 30px,
+                linear-gradient(#fb1 14%, rgba(240, 166, 17, 0) 0, rgba(240, 166, 17, 0) 85%, #fb1 0)0 0,
+                linear-gradient(150deg, #fb1 24%, #B71 0, #B71 26%, rgba(240, 166, 17, 0) 0, rgba(240, 166, 17, 0) 74%, #B71 0, #B71 76%, #fb1 0)0 0,
+                linear-gradient(30deg, #fb1 24%, #B71 0, #B71 26%, rgba(240, 166, 17, 0) 0, rgba(240, 166, 17, 0) 74%, #B71 0, #B71 76%, #fb1 0)0 0,
+                linear-gradient(90deg, #B71 2%, #fb1 0, #fb1 98%, #B71 0%)0 0 #fb1;
+            background-size: 40px 60px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+            font-family: roboto;
+            text-align: center;
+        }
+
+        .btn-success {
+            position: relative;
+            width: 100px;
+            height: 38px;
+            font-size: 20px;
+            margin: 300px, 600px;
+            margin-left: 0px;
+            border-style: none;
+            color: white;
+            background: #FF6347;
+            font-weight: 400;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4)
+        }
+
+        .particle-js {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0 left: 0;
+
+            height: 100%;
+            /*background: #f00;*/
+            z-index: -1;
+
+        }
+
+        .row {
+            position: absolute;
+            top: 45%;
+            left: 25%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%) align: center;
+
+        }
+
+        .container {
+            justify-content: space-between;
+
+        }
+
+        .container .box {
+
+            position: absolute;
+            top: 40%;
+            width: 400px;
+            left: 90%;
+            margin-right: -45%;
+            padding: 40px;
+            background: #fc261f;
+            box-shadow: 10px 10px 5px 0px rgba(222, 61, 33, 1);
+            border-radius: 4px;
+            margin: 20px;
+            overflow: hidden;
+
+
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- <h3 class="top">This Magic Brain Suggests a Best Caption For You. Give it a try </h3> -->
+
+    <div id="particles-js">
+        <h3 class="top">This Magic Brain Suggests a Best Caption For You. Give it a try </h3>
+        <script type="text/javascript" src="static/particles.js"></script>
+        <script type="text/javascript" src="static/app.js"></script>
+    </div>
+    <h3 class="top">This Magic Brain Suggests a Best Caption For You. Give it a try </h3>
+
+
+    <div class="card">
+        <h3 class="top">This Magic Brain Suggests a Best Caption For You. Give it a try </h3>
+        <form class="form-inline" method="POST" action="/" enctype="multipart/form-data">
+            <label><b>Image : &nbsp;&nbsp;</b></label>
+            <input class="form-control" type="file" name="userfile" placeholder="Your Image" required autofocus>
+            <button type="submit" class="btn-success">Submit</button>
+        </form>
+    </div>
+    <br>
+    <br>
+    {% if your_result %}
+
+
+    <div class="row">
+        <div class="col-sm-4">
+            <img src="{{your_result['image']}}" width="256" height="256">
+        </div>
+        <div class="container">
+            <div class="box">
+                <div class="content">
+                    <p class="text">
+                        Generated Caption :
+                    </p>
+                    <p class="result">
+                        <b>{{your_result['caption']}}</b>
+                    </p>
+                </div>
+
+            </div>
+
+            {% endif %}
+        </div>
+    </div>
+
+
+</body>
+
+</html>
