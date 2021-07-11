@@ -1,7 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[7]:
 
 
 import pandas as pd
@@ -22,27 +18,25 @@ from keras.layers import Input, Dense, Dropout, Embedding, LSTM
 from keras.layers.merge import add
 
 
-# In[8]:
+
+
+model = load_model("model/model.h5")
 
 
 
-model = load_model("model/model_9.h5")
-
-
-# In[10]:
 
 
 model_temp = ResNet50(weights="imagenet",input_shape=(224,224,3))
 
 
-# In[11]:
+
 
 
 model_resnet = Model(model_temp.input,model_temp.layers[-2].output)
 
 
 
-# In[14]:
+
 
 
 def preprocess_img(img):
@@ -54,7 +48,7 @@ def preprocess_img(img):
     return img
 
 
-# In[19]:
+
 
 
 def encode_image(img):
@@ -66,14 +60,6 @@ def encode_image(img):
     return feature_vector
 
 
-# In[ ]:
-
-
-
-
-
-# In[33]:
-
 
 with open("./storage/word_to_idx.pkl",'rb') as w2i:
     word_to_idx = pickle.load(w2i)
@@ -82,19 +68,6 @@ with open("./storage/idx_to_word.pkl",'rb') as i2w:
     idx_to_word = pickle.load(i2w)
 
 
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[34]:
 
 
 def predict_caption(photo):
@@ -118,7 +91,7 @@ def predict_caption(photo):
     return final_caption
 
 
-# In[35]:
+
 
 def caption_this_image(image):
     
