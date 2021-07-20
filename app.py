@@ -7,8 +7,8 @@ from flask import redirect
 import Caption_It
 
 
-app = Flask(__name__)
-UPLOAD_FOLDER = "./static/"
+app = Flask(__name__,static_folder='./uploads')
+UPLOAD_FOLDER = "./uploads/"
 # def caption():
 #     return render_template("index.html")
 @app.route('/')
@@ -19,7 +19,7 @@ def caption():
 def imgCaption():
     if request.method == 'POST':
         f = request.files['userfile']
-        path = "./static/{}".format(f.filename)
+        path = "./uploads/{}".format(f.filename)
         f.save(path)
 
         caption = Caption_It.caption_this_image(path)
@@ -35,6 +35,6 @@ def imgCaption():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,port=5001)
 
 
